@@ -82,3 +82,5 @@ exist returns HTTP 404.
 PATCH updates only the supplied fields. Omitted fields keep their current
 values. Sending description: null clears the description.
 Sending title: null or status: null is rejected.
+## Storage
+Tasks are stored in memory only. All data is lost when the server restarts. A database will replace it in a later session.
