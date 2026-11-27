@@ -64,3 +64,21 @@ taskboard/
 ├── README.md
 └── requirements.txt
 ```
+
+
+## Input validation
+
+Invalid input returns HTTP 422. A valid positive task ID that does not
+exist returns HTTP 404.
+
+| Field | Validation rule |
+| --- | --- |
+| title | Required on creation, trimmed, 1–200 characters, never null |
+| description | Optional and nullable, maximum 2,000 characters |
+| status | todo, in_progress or done; defaults to todo; never null |
+| Unknown fields | Rejected, including id and owner |
+| task_id | Positive integer |
+
+PATCH updates only the supplied fields. Omitted fields keep their current
+values. Sending description: null clears the description.
+Sending title: null or status: null is rejected.
